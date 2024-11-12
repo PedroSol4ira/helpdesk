@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
-
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -9,11 +8,12 @@ export default function CreateUser() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [userType, setUserType] = useState("usuario");  // Valor padrão é "usuario"
+    const [userType, setUserType] = useState("Usuário");
 
-    // Função para lidar com o envio do formulário
+
+
     async function handleSubmit(event: React.FormEvent) {
-        event.preventDefault(); // Previne o comportamento padrão de envio do formulário
+        event.preventDefault();
 
         const userData = {
             name,
@@ -23,7 +23,7 @@ export default function CreateUser() {
         };
 
         try {
-            const response = await fetch("./api/createUser", {
+            const response = await fetch("./api/user/createUser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -41,12 +41,11 @@ export default function CreateUser() {
             console.error("Erro ao criar usuário:", error);
         }
     }
-
     return (
         <div className="border w-1/2 flex flex-col justify-center">
             <ToastContainer />
             <h1>Cadastrar usuário</h1>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4 ">
                 <div className="flex justify-center">
                     <label htmlFor="userType" className="p-6">
                         Tipo de usuário:

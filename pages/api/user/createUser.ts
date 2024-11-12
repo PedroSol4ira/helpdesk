@@ -6,14 +6,12 @@ export default async function CreateUser(req: NextApiRequest, res: NextApiRespon
         try {
             const { name, email, password, userType } = req.body;
 
-            // Definir o tipo de userType corretamente
             const userTypeMap: { [key in 'administrador' | 'tecnico' | 'usuario']: number } = {
                 administrador: 1,
                 tecnico: 2,
                 usuario: 3,
             };
 
-            // Garantir que 'userType' seja uma chave válida do userTypeMap
             const mappedUserType = userTypeMap[userType as 'administrador' | 'tecnico' | 'usuario'] || 3;
 
             const user = await prisma.user.create({
@@ -21,7 +19,7 @@ export default async function CreateUser(req: NextApiRequest, res: NextApiRespon
                     name,
                     email,
                     password,
-                    userType: mappedUserType,
+                    userType: mappedUserType
                 },
             });
 
