@@ -1,13 +1,11 @@
-import prisma from "@/lib/prisma";
 import React, { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
+import Router from "next/router";
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [userType, setUserType] = useState();
 
     async function handleSubmit(event: React.FormEvent) {
         event.preventDefault();
@@ -70,11 +68,17 @@ export default function Login() {
                 </div>
 
                 <div className="">
-                    <a href="./createUser.tsx" className="flex justify-center mx-auto hover:text-red-700">Cadastre-se</a>
+                    <button
+                        type="button"
+                        onClick={() => Router.push('/user/createUser')}
+                        className="text-blue-500 flex mx-auto"
+                    >
+                        Cadastre-se
+                    </button>
                 </div>
 
                 <div className="flex justify-center p-2">
-                    <button type="submit" className="p-4 bg-blue-500 text-white">
+                    <button type="submit" className="p-4 bg-green-500 text-white rounded">
                         Entrar
                     </button>
                 </div>

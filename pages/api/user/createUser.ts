@@ -1,10 +1,12 @@
 import prisma from "@/lib/prisma";
 import { NextApiRequest, NextApiResponse } from "next";
+import argon2 from 'argon2';
 
 export default async function CreateUser(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
         try {
             const { name, email, password, userType } = req.body;
+            const hashPassword = await argon2.hash(password)
 
             const userTypeMap: { [key in 'administrador' | 'tecnico' | 'usuario']: number } = {
                 administrador: 1,
@@ -18,7 +20,7 @@ export default async function CreateUser(req: NextApiRequest, res: NextApiRespon
                 data: {
                     name,
                     email,
-                    password,
+                    password: hashPassword,
                     userType: mappedUserType
                 },
             });

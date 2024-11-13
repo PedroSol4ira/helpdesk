@@ -1,4 +1,3 @@
-import CreateUser from "./user/createUser";
 import Login from "./user/login";
 
 
@@ -11,6 +10,7 @@ export default function Home() {
         backgroundImage: 'url("/images/bgindex.jpeg")' // Caminho para a imagem
       }}>
       <Login />
+
     </div>
   )
 }
