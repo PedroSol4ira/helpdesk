@@ -24,7 +24,21 @@ export default function Login() {
             const data = await response.json();
 
             if (response.ok) {
-                toast.success(data.message)
+                toast.success(data.message);
+
+                switch (data.user.userType) {
+                    case 1:
+                        Router.push('/gerenciamento/page');
+                        break;
+                    case 2:
+                        Router.push('/gerenciamento/tecnicoPage');
+                        break;
+                    case 3:
+                        Router.push('/gerenciamento/userPage');
+                        break;
+                    default:
+                        toast.error("Tipo de usuário desconhecido.");
+                }
             } else {
                 toast.error(data.message)
             }
