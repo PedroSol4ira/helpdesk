@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Sidebar from "./sidebar";
+import { FaEdit, FaFontAwesome, FaTrash } from "react-icons/fa";
+import { FaDeleteLeft } from "react-icons/fa6";
 
 
 type User = {
@@ -66,6 +68,10 @@ const PageAdmin: React.FC = () => {
                             <th className="py-4 px-6 border-b border-gray-600 text-center">Nome</th>
                             <th className="py-4 px-6 border-b border-gray-600 text-center">Email</th>
                             <th className="py-4 px-6 border-b border-gray-600 text-center">Tipo de usuário</th>
+                            <th className="py-4 px-6 border-b border-gray-600 text-center"></th>
+                            <th className="py-4 px-6 border-b border-gray-600 text-center"></th>
+
+
                         </tr>
                     </thead>
                     <tbody>
@@ -76,6 +82,22 @@ const PageAdmin: React.FC = () => {
                                 <td className="py-4 px-6 border-b border-gray-600 text-center">
                                     {getUserTypeName(user.userType)}
                                 </td>
+                                <td className="py-4 px-6 border-b border-gray-600 text-center">
+                                    <button
+                                        type="button"
+                                    >
+                                        <FaEdit />
+                                    </button>
+                                </td>
+                                <td className="py-4 px-6 border-b border-gray-600 text-center">
+                                    <button
+                                        type="button"
+                                    >
+                                        <FaTrash />
+                                    </button>
+                                </td>
+
+
                             </tr>
                         ))}
                     </tbody>

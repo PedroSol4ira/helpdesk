@@ -7,9 +7,6 @@ export default function page() {
     return (
         <div>
             <Sidebar />
-            <PageAdmin />
-
-
         </div>
     )
 }
