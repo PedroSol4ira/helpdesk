@@ -40,6 +40,10 @@ const Sidebar: React.FC = () => {
                             <RiUserSettingsFill className="mr-3" />
                             <a href="/gerenciamento/components/allUser">Gerenciamento de usuários</a>
                         </li>
+                        <li className={`px-4 py-2 hover:bg-gray-700 flex items-center ${isActive('/gerenciamento/components/equipament') ? 'bg-gray-600' : ''}`}>
+                            <RiUserSettingsFill className="mr-3" />
+                            <a href="/gerenciamento/components/equipament">Gerenciamento de equipamentos</a>
+                        </li>
                         <li className={`px-4 py-2 hover:bg-gray-700 flex items-center ${isActive('/configuracoes') ? 'bg-gray-600' : ''}`}>
                             <FaCog className="mr-3" />
                             <span>Configurações</span>
