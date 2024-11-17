@@ -9,7 +9,8 @@ export default async function getAllEquipament(req: NextApiRequest, res: NextApi
                     id: true,
                     name: true,
                     mark: true,
-                    SerialNumber: true
+                    SerialNumber: true,
+                    type: true
 
                 }
             })

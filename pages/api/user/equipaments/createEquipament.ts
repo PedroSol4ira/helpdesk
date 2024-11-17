@@ -5,8 +5,8 @@ export default async function createEquipaments(req: NextApiRequest, res: NextAp
     if (req.method === 'POST') {
 
         try {
-            const { name, mark, SerialNumber } = req.body;
-            if (!name || !mark || !SerialNumber) {
+            const { name, mark, SerialNumber, type } = req.body;
+            if (!name || !mark || !SerialNumber || !type) {
                 res.status(400).json({ message: "Preencha todos os campos" })
             }
 
@@ -14,7 +14,8 @@ export default async function createEquipaments(req: NextApiRequest, res: NextAp
                 data: {
                     name,
                     mark,
-                    SerialNumber
+                    SerialNumber,
+                    type
                 }
             })
             res.status(200).json({ message: 'Equipamento criado com sucesso' })
