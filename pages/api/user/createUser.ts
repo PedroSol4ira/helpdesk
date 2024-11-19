@@ -1,27 +1,27 @@
 import prisma from "@/lib/prisma";
 import { NextApiRequest, NextApiResponse } from "next";
+import argon2 from 'argon2';
 
 export default async function CreateUser(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
         try {
             const { name, email, password, userType } = req.body;
+            const hashPassword = await argon2.hash(password)
 
-            // Definir o tipo de userType corretamente
             const userTypeMap: { [key in 'administrador' | 'tecnico' | 'usuario']: number } = {
                 administrador: 1,
                 tecnico: 2,
                 usuario: 3,
             };
 
-            // Garantir que 'userType' seja uma chave válida do userTypeMap
             const mappedUserType = userTypeMap[userType as 'administrador' | 'tecnico' | 'usuario'] || 3;
 
             const user = await prisma.user.create({
                 data: {
                     name,
                     email,
-                    password,
-                    userType: mappedUserType,
+                    password: hashPassword,
+                    userType: mappedUserType
                 },
             });
 
